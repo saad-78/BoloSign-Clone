@@ -4,7 +4,7 @@ import '@react-pdf-viewer/core/lib/styles/index.css'
 import { PDFViewer } from './components/PDFViewer'
 import { SignatureModal } from './components/SignatureModal'
 
-const BACKEND_URL = 'http://localhost:4000'
+const BACKEND_URL = 'https://bolosign-clone.onrender.com'
 
 function App() {
   const [fileUrl, setFileUrl] = useState(null)
@@ -14,13 +14,13 @@ function App() {
   const [activeType, setActiveType] = useState('signature')
   const [numPages, setNumPages] = useState(0)
   
-  // UI State
+
   const [isSigModalOpen, setIsSigModalOpen] = useState(false)
   const [activeFieldId, setActiveFieldId] = useState(null) 
   const [selectedFieldId, setSelectedFieldId] = useState(null) 
-  const [isDragging, setIsDragging] = useState(false) // <--- NEW STATE
+  const [isDragging, setIsDragging] = useState(false) 
 
-  // Helper to process the file (used by both Drop and Input)
+
   const processFile = async (file) => {
     if (!file || file.type !== 'application/pdf') {
       alert('Please upload a valid PDF file.')
@@ -57,7 +57,7 @@ function App() {
     if (file) await processFile(file)
   }
 
-  // <--- NEW DRAG & DROP HANDLERS --->
+
   const handleDragOver = (e) => {
     e.preventDefault()
     setIsDragging(true)
@@ -74,7 +74,7 @@ function App() {
     const file = e.dataTransfer.files?.[0]
     if (file) await processFile(file)
   }
-  // <--- END HANDLERS --->
+
 
   const handleFieldAdd = (fieldData) => {
     const newId = String(Date.now())
@@ -156,7 +156,7 @@ function App() {
       }}
       onClick={() => setSelectedFieldId(null)}
     >
-      {/* Sidebar */}
+
       <div
         style={{
           width: 280,
@@ -184,7 +184,7 @@ function App() {
             Step 1: Upload
           </label>
           
-          {/* DRAG AND DROP ZONE */}
+        
           <div 
             style={{ 
               position: 'relative',
