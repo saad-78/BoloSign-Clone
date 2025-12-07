@@ -33,7 +33,7 @@ connectDB()
     process.exit(1)
   })
 
-router.get('/health', (req, res) => {
+app.get('/health', (req, res) => {
   res.status(200).json({ status: 'ok', timestamp: new Date() });
 });
 
