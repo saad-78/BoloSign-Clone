@@ -87,22 +87,6 @@ npm install
 npm run dev
 
 
-Frontend runs at: http://localhost:5173
-
-📂 Project Structure
-├── backend/
-│   ├── uploads/            # Stores raw and signed PDFs
-│   ├── models/             # Mongoose schemas (Document, AuditLog)
-│   ├── routes/             # API endpoints
-│   └── index.js            # Server entry point
-│
-└── frontend/
-    ├── src/
-    │   ├── components/
-    │   │   ├── PDFViewer.jsx       # PDF rendering + overlay logic
-    │   │   └── SignatureModal.jsx  # Signature drawing canvas
-    │   └── App.jsx                 # Main layout & state management
-
 🔌 API Endpoints
 POST /api/upload-pdf
 
@@ -173,6 +157,3 @@ The backend burns all fields into the PDF and opens the final document.
 Contributions are welcome!
 Fork the repo → make changes → submit a pull request.
 
-📄 License
-
-This project is licensed under the MIT License.
