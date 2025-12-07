@@ -172,7 +172,7 @@ function App() {
       >
         <div style={{ marginBottom: 32 }}>
           <h3 style={{ margin: 0, fontSize: 20, fontWeight: 700, color: '#0f172a', letterSpacing: '-0.025em' }}>
-            DocuSign Clone
+            BoloSign Clone
           </h3>
           <p style={{ margin: '4px 0 0', fontSize: 13, color: '#64748b' }}>
             Simple PDF Signing Tool
