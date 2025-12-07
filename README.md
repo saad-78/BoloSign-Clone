@@ -1,13 +1,15 @@
-📝 OpenSign - PDF E-Signature Platform
-OpenSign is a powerful, full-stack web application that allows users to upload PDF documents, drag-and-drop interactive fields (Signatures, Text, Dates), and digitally sign documents directly in the browser. It serves as a lightweight, open-source alternative to platforms like DocuSign.
+📝 OpenSign – PDF E-Signature Platform
 
+OpenSign is a powerful full-stack web application that allows users to upload PDF documents, drag-and-drop interactive fields (Signature, Text, Date), and digitally sign documents directly in the browser. It serves as a lightweight, open-source alternative to platforms like DocuSign.
 
 ✨ Features
-📄 PDF Upload & Rendering: High-fidelity PDF rendering using react-pdf-viewer.
+📄 PDF Upload & Rendering
 
-🖱️ Drag-and-Drop Editor:
+High-fidelity PDF rendering using react-pdf-viewer.
 
-Place Signature, Text, and Date fields anywhere on the page.
+🖱️ Drag-and-Drop Editor
+
+Place Signature, Text, and Date fields anywhere.
 
 Move fields using a dedicated drag handle.
 
@@ -15,48 +17,51 @@ Resize fields to fit specific document areas.
 
 Delete unwanted fields.
 
-✍️ Digital Signature Pad:
+✍️ Digital Signature Pad
 
-Draw signatures smoothly with pressure sensitivity.
+Smooth drawing with pressure sensitivity.
 
 Auto-trims whitespace for perfect centering.
 
-⌨️ Interactive Input: Type directly into text fields or pick dates before saving.
+⌨️ Interactive Input
 
-🔥 PDF Generation (The "Burn"):
+Type directly into text fields or pick dates before saving.
 
-The backend calculates exact coordinates (converting browser pixels to PDF points).
+🔥 PDF Generation ("The Burn")
 
-Embeds images (signatures) and text (Helvetica font) permanently into the final PDF.
+Backend converts browser pixels → PDF points.
+
+Embeds images (signatures) & text (Helvetica font) permanently into the final PDF.
 
 🛠️ Tech Stack
 Frontend
+
 React (Vite)
 
-@react-pdf-viewer/core - For rendering PDF pages.
+@react-pdf-viewer/core
 
-react-rnd - For draggable and resizable components.
+react-rnd
 
-react-signature-canvas - For capturing drawing input.
+react-signature-canvas
 
-Axios - For API communication.
+Axios
 
 Backend
-Node.js & Express - REST API.
 
-pdf-lib - The core engine for modifying and saving PDFs.
+Node.js & Express
 
-Multer - For handling file uploads.
+pdf-lib
 
-MongoDB (Optional/Model dependent) - For storing document metadata.
+Multer (file uploads)
+
+MongoDB (optional)
 
 🚀 Getting Started
-Follow these steps to run the project locally.
-
 Prerequisites
-Node.js (v14 or higher)
 
-MongoDB (if using database persistence)
+Node.js (v14+)
+
+MongoDB (optional)
 
 1. Backend Setup
 # Navigate to backend directory
@@ -67,7 +72,9 @@ npm install express mongoose multer pdf-lib cors dotenv
 
 # Start the server
 node index.js
-The server will run on http://localhost:4000
+
+
+Server runs at: http://localhost:4000
 
 2. Frontend Setup
 # Navigate to frontend directory
@@ -78,10 +85,11 @@ npm install
 
 # Start the development server
 npm run dev
-The frontend will run on http://localhost:5173
+
+
+Frontend runs at: http://localhost:5173
 
 📂 Project Structure
-text
 ├── backend/
 │   ├── uploads/            # Stores raw and signed PDFs
 │   ├── models/             # Mongoose schemas (Document, AuditLog)
@@ -91,24 +99,27 @@ text
 └── frontend/
     ├── src/
     │   ├── components/
-    │   │   ├── PDFViewer.jsx      # Core logic for PDF + Overlay layer
-    │   │   └── SignatureModal.jsx # Canvas for drawing signatures
-    │   └── App.jsx                # Main layout and state management
-    
+    │   │   ├── PDFViewer.jsx       # PDF rendering + overlay logic
+    │   │   └── SignatureModal.jsx  # Signature drawing canvas
+    │   └── App.jsx                 # Main layout & state management
+
 🔌 API Endpoints
 POST /api/upload-pdf
-Uploads a raw PDF file to the server.
 
-Payload: FormData containing the file.
+Uploads a raw PDF to the server.
 
-Response: { id: "doc_id", originalHash: "..." }
+Payload: FormData (file)
+
+Response:
+
+{ "id": "doc_id", "originalHash": "..." }
 
 POST /api/sign-pdf
+
 Processes the document and burns fields onto it.
 
 Payload:
 
-json
 {
   "documentId": "12345",
   "fields": [
@@ -122,37 +133,46 @@ json
       "value": "data:image/png;base64,..."
     },
     {
-       "type": "text",
-       "value": "John Doe",
-       ...
+      "type": "text",
+      "value": "John Doe"
     }
   ]
 }
-Response: { signedPdfUrl: "http://localhost:4000/files/..." }
+
+
+Response:
+
+{ "signedPdfUrl": "http://localhost:4000/files/..." }
 
 🛡️ Usage Guide
-Upload: Click the file input in the sidebar to select a PDF.
+1. Upload
 
-Add Fields:
+Select a PDF using the sidebar file input.
 
-Select "Signature", "Text", or "Date" from the dropdown.
+2. Add Fields
 
-Click anywhere on the PDF page to drop the field.
+Choose Signature / Text / Date → click on the PDF to place it.
 
-Edit Fields:
+3. Edit Fields
 
-Move: Click the field to select it, then drag the Blue Handle on top.
+Move: Drag via the blue handle
 
-Resize: Drag the corners of the box.
+Resize: Pull corners
 
-Type: Click inside Text/Date boxes to enter values.
+Type: Click inside Text/Date fields
 
-Sign: Click the "Sign" button on a signature box to open the drawing pad.
+Sign: Open the signature pad to draw
 
-Save: Click "Download Signed PDF" in the sidebar. The backend will process the file and open the final result in a new tab.
+4. Save
+
+Click Download Signed PDF.
+The backend burns all fields into the PDF and opens the final document.
 
 🤝 Contributing
-Contributions are welcome! Please fork the repository and submit a pull request.
+
+Contributions are welcome!
+Fork the repo → make changes → submit a pull request.
 
 📄 License
+
 This project is licensed under the MIT License.
